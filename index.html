@@ -2,7 +2,6 @@
 <html lang="hi">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,16 +9,54 @@
 
 <style>
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
 body{
     font-family: Arial, sans-serif;
     background:#f3f4f6;
-    margin:0;
-    padding:20px;
+    padding:15px;
 }
 
 h1{
     text-align:center;
     margin-bottom:20px;
+    color:#111827;
+}
+
+.summary{
+    background:white;
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:20px;
+    box-shadow:0 0 10px rgba(0,0,0,0.08);
+}
+
+.summary h2{
+    margin-bottom:10px;
+}
+
+.summary p{
+    margin:8px 0;
+    font-size:17px;
+}
+
+.total{
+    color:#dc2626;
+    font-weight:bold;
+}
+
+.received{
+    color:#16a34a;
+    font-weight:bold;
+}
+
+.remaining{
+    color:#2563eb;
+    font-weight:bold;
 }
 
 table{
@@ -34,45 +71,59 @@ table{
 th{
     background:#111827;
     color:white;
-    padding:14px;
+    padding:12px;
+    font-size:14px;
 }
 
 td{
-    padding:14px;
+    padding:10px;
     text-align:center;
     border-bottom:1px solid #ddd;
+    font-size:14px;
 }
 
 .amount{
     color:red;
     font-weight:bold;
-    font-size:18px;
 }
 
 .advance{
     color:green;
     font-weight:bold;
-    font-size:18px;
+}
+
+.pending{
+    color:#dc2626;
+    font-weight:bold;
+}
+
+.complete{
+    color:#16a34a;
+    font-weight:bold;
 }
 
 .paybtn{
     background:#16a34a;
     color:white;
-    padding:10px 18px;
+    padding:10px 14px;
     border-radius:8px;
     text-decoration:none;
     display:inline-block;
     font-weight:bold;
-    margin-top:5px;
     border:none;
     cursor:pointer;
+    margin-top:5px;
+}
+
+.paidbtn{
+    background:#2563eb;
 }
 
 .note{
-    margin-top:25px;
+    margin-top:20px;
     text-align:center;
     color:red;
-    font-size:18px;
+    font-size:17px;
     font-weight:bold;
 }
 
@@ -86,15 +137,20 @@ td{
     display:none;
     justify-content:center;
     align-items:center;
+    z-index:999;
 }
 
 .popup-box{
     background:white;
-    width:90%;
-    max-width:400px;
+    width:92%;
+    max-width:420px;
     padding:20px;
     border-radius:12px;
     position:relative;
+}
+
+.popup-box h2{
+    margin-bottom:10px;
 }
 
 input, textarea{
@@ -103,7 +159,7 @@ input, textarea{
     margin-top:10px;
     border:1px solid #ccc;
     border-radius:8px;
-    box-sizing:border-box;
+    font-size:15px;
 }
 
 .submitbtn{
@@ -130,6 +186,20 @@ input, textarea{
     cursor:pointer;
 }
 
+@media(max-width:700px){
+
+th,td{
+    padding:8px;
+    font-size:12px;
+}
+
+.paybtn{
+    font-size:12px;
+    padding:8px 10px;
+}
+
+}
+
 </style>
 
 </head>
@@ -138,77 +208,132 @@ input, textarea{
 
 <h1>कोर्ट खर्च भुगतान</h1>
 
+<div class="summary">
+
+<h2>खर्च का हिसाब</h2>
+
+<p>
+कुल खर्च:
+<span class="total">₹45000</span>
+</p>
+
+<p>
+अब तक प्राप्त अमाउंट:
+<span class="received">₹9800</span>
+</p>
+
+<p>
+बाकी बचा:
+<span class="remaining">₹35200</span>
+</p>
+
+</div>
+
+
+
 <table>
 
 <tr>
 <th>नाम</th>
+<th>कुल देना</th>
+<th>दिया गया</th>
+<th>बाकी</th>
 <th>स्थिति</th>
 <th>Payment</th>
 </tr>
 
 
+
 <tr>
+
 <td>अवनीश</td>
 
-<td class="advance">
-Advance ₹3000
-</td>
+<td class="amount">₹5000</td>
 
-<td>
+<td class="advance">₹3000</td>
 
-<button class="paybtn"
-style="background:#2563eb;">
-Already Paid
-</button>
+<td class="pending">₹2000</td>
 
-</td>
-</tr>
-
-
-
-<tr>
-<td>गोलू</td>
-
-<td class="amount">
-₹4000
-</td>
+<td class="pending">Pending</td>
 
 <td>
 
 <a class="paybtn"
-href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=4000&cu=INR&tn=Golu Court Fee">
+href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=2000&cu=INR&tn=Avnish Court Fee">
 
-Pay Now
+Pay ₹2000
 
 </a>
 
 <br><br>
 
 <button class="paybtn"
-onclick="openForm('गोलू','4000')">
+onclick="openForm('अवनीश','2000')">
 
 Screenshot Send
 
 </button>
 
 </td>
+
 </tr>
 
 
 
 <tr>
+
+<td>गोलू</td>
+
+<td class="amount">₹4000</td>
+
+<td class="advance">₹1000</td>
+
+<td class="pending">₹3000</td>
+
+<td class="pending">Pending</td>
+
+<td>
+
+<a class="paybtn"
+href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=3000&cu=INR&tn=Golu Court Fee">
+
+Pay ₹3000
+
+</a>
+
+<br><br>
+
+<button class="paybtn"
+onclick="openForm('गोलू','3000')">
+
+Screenshot Send
+
+</button>
+
+</td>
+
+</tr>
+
+
+
+<tr>
+
 <td>अंकुल</td>
 
-<td class="amount">
-₹5000
-</td>
+<td class="amount">₹5000</td>
+
+<td class="advance">₹0</td>
+
+<td class="pending">₹5000</td>
+
+<td class="pending">Pending</td>
 
 <td>
 
 <a class="paybtn"
 href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=5000&cu=INR&tn=Ankul Court Fee">
 
-Pay Now
+Pay ₹5000
 
 </a>
 
@@ -222,23 +347,29 @@ Screenshot Send
 </button>
 
 </td>
+
 </tr>
 
 
 
 <tr>
+
 <td>लल्ली</td>
 
-<td class="amount">
-₹5000
-</td>
+<td class="amount">₹5000</td>
+
+<td class="advance">₹0</td>
+
+<td class="pending">₹5000</td>
+
+<td class="pending">Pending</td>
 
 <td>
 
 <a class="paybtn"
 href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=5000&cu=INR&tn=Lalli Court Fee">
 
-Pay Now
+Pay ₹5000
 
 </a>
 
@@ -252,53 +383,65 @@ Screenshot Send
 </button>
 
 </td>
+
 </tr>
 
 
 
 <tr>
+
 <td>पवन</td>
 
-<td class="amount">
-₹4200
-</td>
+<td class="amount">₹4200</td>
+
+<td class="advance">₹800</td>
+
+<td class="pending">₹3400</td>
+
+<td class="pending">Pending</td>
 
 <td>
 
 <a class="paybtn"
-href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=4200&cu=INR&tn=Pawan Court Fee">
+href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=3400&cu=INR&tn=Pawan Court Fee">
 
-Pay Now
+Pay ₹3400
 
 </a>
 
 <br><br>
 
 <button class="paybtn"
-onclick="openForm('पवन','4200')">
+onclick="openForm('पवन','3400')">
 
 Screenshot Send
 
 </button>
 
 </td>
+
 </tr>
 
 
 
 <tr>
+
 <td>अभय</td>
 
-<td class="amount">
-₹5000
-</td>
+<td class="amount">₹5000</td>
+
+<td class="advance">₹0</td>
+
+<td class="pending">₹5000</td>
+
+<td class="pending">Pending</td>
 
 <td>
 
 <a class="paybtn"
 href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=5000&cu=INR&tn=Abhay Court Fee">
 
-Pay Now
+Pay ₹5000
 
 </a>
 
@@ -312,7 +455,82 @@ Screenshot Send
 </button>
 
 </td>
+
 </tr>
+
+
+
+<tr>
+
+<td>अनिरूद्ध</td>
+
+<td class="amount">₹5000</td>
+
+<td class="advance">₹0</td>
+
+<td class="pending">₹5000</td>
+
+<td class="pending">Pending</td>
+
+<td>
+
+<a class="paybtn"
+href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=5000&cu=INR&tn=Avdhesh Court Fee">
+
+Pay ₹5000
+
+</a>
+
+<br><br>
+
+<button class="paybtn"
+onclick="openForm('<अनिरूद्ध','5000')">
+
+Screenshot Send
+
+</button>
+
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>कृष्ण कुमार</td>
+
+<td class="amount">₹5000</td>
+
+<td class="advance">₹0</td>
+
+<td class="pending">₹5000</td>
+
+<td class="pending">Pending</td>
+
+<td>
+
+<a class="paybtn"
+href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=5000&cu=INR&tn=Krishna Kumar Court Fee">
+
+Pay ₹5000
+
+</a>
+
+<br><br>
+
+<button class="paybtn"
+onclick="openForm('कृष्ण कुमार','5000')">
+
+Screenshot Send
+
+</button>
+
+</td>
+
+</tr>
+
+
 
 </table>
 
@@ -343,7 +561,6 @@ placeholder="अमाउंट">
 placeholder="Comment / Payment किसलिए दिया">
 </textarea>
 
-
 <label style="display:block;margin-top:15px;font-weight:bold;">
 
 Screenshot Upload
@@ -354,13 +571,11 @@ Screenshot Upload
 id="screenshot"
 accept="image/*">
 
-
-<p style="color:red;font-size:14px;">
+<p style="color:red;font-size:14px;margin-top:10px;">
 
 WhatsApp खुलने के बाद screenshot attach करके भेजें।
 
 </p>
-
 
 <button class="submitbtn"
 onclick="sendWhatsApp()">
@@ -399,6 +614,19 @@ document.getElementById("amount").value=amount;
 function closeForm(){
 
 document.getElementById("popup").style.display="none";
+
+}
+
+
+window.onclick = function(event){
+
+let popup = document.getElementById("popup");
+
+if(event.target == popup){
+
+popup.style.display = "none";
+
+}
 
 }
 
