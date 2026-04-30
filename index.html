@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>कोर्ट खर्च भुगतान</title>
+<title>कोर्ट केस मैनेजमेंट</title>
 
 <style>
 
@@ -16,116 +16,242 @@
 }
 
 body{
-    font-family: Arial, sans-serif;
-    background:#f3f4f6;
-    padding:15px;
-}
-
-h1{
-    text-align:center;
-    margin-bottom:20px;
+    font-family:Arial,sans-serif;
+    background:#eef2ff;
     color:#111827;
 }
 
+/* NAVBAR */
+
+.navbar{
+    width:100%;
+    background:#111827;
+    padding:15px 18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:999;
+}
+
+.logo{
+    color:white;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.nav-links{
+    display:flex;
+    gap:10px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:white;
+    background:#2563eb;
+    padding:10px 14px;
+    border-radius:10px;
+    font-size:14px;
+}
+
+/* ALERT BAR */
+
+.alert-bar{
+    background:#dc2626;
+    color:white;
+    padding:12px;
+    font-weight:bold;
+    font-size:15px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+/* MAIN */
+
+.container{
+    padding:18px;
+}
+
+/* SUMMARY */
+
 .summary{
-    background:white;
-    padding:15px;
-    border-radius:12px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
     margin-bottom:20px;
-    box-shadow:0 0 10px rgba(0,0,0,0.08);
 }
 
-.summary h2{
+.card{
+    background:white;
+    padding:20px;
+    border-radius:18px;
+    box-shadow:0 5px 14px rgba(0,0,0,0.08);
+}
+
+.card h3{
     margin-bottom:10px;
+    color:#374151;
 }
 
-.summary p{
-    margin:8px 0;
-    font-size:17px;
+.big{
+    font-size:28px;
+    font-weight:bold;
 }
 
-.total{
+.red{
     color:#dc2626;
-    font-weight:bold;
 }
 
-.received{
+.green{
     color:#16a34a;
-    font-weight:bold;
 }
 
-.remaining{
+.blue{
     color:#2563eb;
-    font-weight:bold;
+}
+
+/* TABLE */
+
+.table-box{
+    overflow:auto;
+    border-radius:18px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
 }
 
 table{
     width:100%;
     border-collapse:collapse;
     background:white;
-    border-radius:12px;
-    overflow:hidden;
-    box-shadow:0 0 10px rgba(0,0,0,0.1);
+    min-width:900px;
 }
 
 th{
     background:#111827;
     color:white;
-    padding:12px;
+    padding:15px;
     font-size:14px;
 }
 
 td{
-    padding:10px;
+    padding:14px;
     text-align:center;
-    border-bottom:1px solid #ddd;
-    font-size:14px;
+    border-bottom:1px solid #e5e7eb;
 }
 
-.amount{
-    color:red;
-    font-weight:bold;
+tr:hover{
+    background:#f9fafb;
 }
 
-.advance{
-    color:green;
+.status{
+    padding:6px 12px;
+    border-radius:30px;
+    font-size:13px;
     font-weight:bold;
 }
 
 .pending{
+    background:#fee2e2;
     color:#dc2626;
-    font-weight:bold;
 }
 
-.complete{
+.advance{
+    background:#dcfce7;
     color:#16a34a;
-    font-weight:bold;
 }
 
 .paybtn{
     background:#16a34a;
     color:white;
     padding:10px 14px;
-    border-radius:8px;
+    border-radius:10px;
     text-decoration:none;
     display:inline-block;
-    font-weight:bold;
     border:none;
     cursor:pointer;
-    margin-top:5px;
+    margin-top:6px;
+    font-weight:bold;
 }
 
-.paidbtn{
+.uploadbtn{
     background:#2563eb;
 }
 
-.note{
-    margin-top:20px;
-    text-align:center;
-    color:red;
-    font-size:17px;
-    font-weight:bold;
+.paybtn:hover{
+    opacity:0.9;
 }
+
+/* NEWS */
+
+.news-section{
+    margin-top:30px;
+}
+
+.news-title{
+    margin-bottom:15px;
+    font-size:24px;
+}
+
+.news-card{
+    background:white;
+    border-radius:18px;
+    padding:18px;
+    margin-bottom:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+    border-left:6px solid #2563eb;
+}
+
+.news-date{
+    color:#6b7280;
+    margin-bottom:8px;
+    font-size:14px;
+}
+
+.news-text{
+    font-size:16px;
+    line-height:1.6;
+}
+
+/* DOCUMENTS */
+
+.docs-section{
+    margin-top:30px;
+}
+
+.docs-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:15px;
+}
+
+.doc-card{
+    background:white;
+    border-radius:18px;
+    padding:15px;
+    box-shadow:0 5px 14px rgba(0,0,0,0.08);
+}
+
+.doc-card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    border-radius:12px;
+}
+
+.doc-card h4{
+    margin-top:10px;
+}
+
+.doc-card a{
+    display:inline-block;
+    margin-top:10px;
+    text-decoration:none;
+    background:#16a34a;
+    color:white;
+    padding:8px 12px;
+    border-radius:8px;
+}
+
+/* POPUP */
 
 #popup{
     position:fixed;
@@ -137,41 +263,41 @@ td{
     display:none;
     justify-content:center;
     align-items:center;
-    z-index:999;
+    z-index:9999;
 }
 
 .popup-box{
     background:white;
     width:92%;
     max-width:420px;
-    padding:20px;
-    border-radius:12px;
+    padding:22px;
+    border-radius:18px;
     position:relative;
 }
 
 .popup-box h2{
-    margin-bottom:10px;
+    margin-bottom:12px;
 }
 
 input, textarea{
     width:100%;
     padding:12px;
-    margin-top:10px;
-    border:1px solid #ccc;
-    border-radius:8px;
+    border:1px solid #d1d5db;
+    border-radius:10px;
+    margin-top:12px;
     font-size:15px;
 }
 
 .submitbtn{
     width:100%;
+    margin-top:16px;
     background:#2563eb;
     color:white;
     border:none;
     padding:14px;
-    margin-top:15px;
-    border-radius:8px;
-    font-size:16px;
+    border-radius:10px;
     cursor:pointer;
+    font-size:16px;
 }
 
 .closebtn{
@@ -181,19 +307,44 @@ input, textarea{
     background:red;
     color:white;
     border:none;
-    padding:6px 12px;
-    border-radius:6px;
+    width:35px;
+    height:35px;
+    border-radius:50%;
     cursor:pointer;
 }
 
-@media(max-width:700px){
-
-th,td{
-    padding:8px;
-    font-size:12px;
+.note{
+    margin-top:10px;
+    color:red;
+    font-size:14px;
 }
 
-.paybtn{
+/* FLOAT BUTTON */
+
+.fixed-btn{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#2563eb;
+    color:white;
+    border:none;
+    font-size:30px;
+    cursor:pointer;
+    box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+.logo{
+    font-size:16px;
+}
+
+.nav-links a{
     font-size:12px;
     padding:8px 10px;
 }
@@ -201,35 +352,74 @@ th,td{
 }
 
 </style>
-
 </head>
 
 <body>
 
-<h1>कोर्ट खर्च भुगतान</h1>
+<!-- NAVBAR -->
 
-<div class="summary">
+<div class="navbar">
 
-<h2>खर्च का हिसाब</h2>
+<div class="logo">
+⚖ कोर्ट केस मैनेजमेंट
+</div>
 
-<p>
-कुल खर्च:
-<span class="total">₹45000</span>
-</p>
+<div class="nav-links">
 
-<p>
-अब तक प्राप्त अमाउंट:
-<span class="received">₹9800</span>
-</p>
+<a href="#payments">
+Payment
+</a>
 
-<p>
-बाकी बचा:
-<span class="remaining">₹35200</span>
-</p>
+<a href="#progress">
+Progress
+</a>
+
+<a href="#documents">
+Documents
+</a>
 
 </div>
 
+</div>
 
+<!-- ALERT -->
+
+<div class="alert-bar">
+
+<marquee behavior="scroll" direction="left">
+
+⚠ सभी सदस्य जल्द से जल्द कोर्ट खर्च जमा करें । अगली सुनवाई की तैयारी चल रही है । Payment करने के बाद Screenshot जरूर भेजें ।
+
+</marquee>
+
+</div>
+
+<div class="container">
+
+<!-- SUMMARY -->
+
+<div class="summary">
+
+<div class="card">
+<h3>कुल खर्च</h3>
+<div class="big red">₹45000</div>
+</div>
+
+<div class="card">
+<h3>प्राप्त अमाउंट</h3>
+<div class="big green">₹9800</div>
+</div>
+
+<div class="card">
+<h3>बाकी बचा</h3>
+<div class="big blue">₹35200</div>
+</div>
+
+</div>
+
+<!-- TABLE -->
+
+<div id="payments" class="table-box">
 
 <table>
 
@@ -242,299 +432,324 @@ th,td{
 <th>Payment</th>
 </tr>
 
-
-
 <tr>
-
 <td>अवनीश</td>
-
-<td class="amount">₹5000</td>
-
-<td class="advance">₹8000</td>
-
-<td class="pending">₹0</td>
-
-<td class="advance">Advance</td>
-
+<td>₹5000</td>
+<td class="green">₹8000</td>
+<td>₹0</td>
+<td><span class="status advance">Advance</span></td>
 <td>
 
 <a class="paybtn"
-href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=2000&cu=INR&tn=Avnish Court Fee">
+href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=0&cu=INR">
 
-Pay ₹0
+Paid
 
 </a>
 
-<br><br>
+<br>
 
-<button class="paybtn"
+<button class="paybtn uploadbtn"
 onclick="openForm('अवनीश','0')">
 
-Screenshot Send
+Screenshot
 
 </button>
 
 </td>
-
 </tr>
 
-
-
 <tr>
-
 <td>गोलू</td>
-
-<td class="amount">₹4000</td>
-
-<td class="advance">₹1000</td>
-
-<td class="pending">₹3000</td>
-
-<td class="pending">Pending</td>
-
+<td>₹4000</td>
+<td>₹1000</td>
+<td class="red">₹3000</td>
+<td><span class="status pending">Pending</span></td>
 <td>
 
 <a class="paybtn"
-href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=3000&cu=INR&tn=Golu Court Fee">
+href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=3000&cu=INR">
 
 Pay ₹3000
 
 </a>
 
-<br><br>
+<br>
 
-<button class="paybtn"
+<button class="paybtn uploadbtn"
 onclick="openForm('गोलू','3000')">
 
-Screenshot Send
+Screenshot
 
 </button>
 
 </td>
-
 </tr>
 
-
-
 <tr>
-
 <td>अंकुल</td>
-
-<td class="amount">₹5000</td>
-
-<td class="advance">₹0</td>
-
-<td class="pending">₹5000</td>
-
-<td class="pending">Pending</td>
-
+<td>₹5000</td>
+<td>₹0</td>
+<td class="red">₹5000</td>
+<td><span class="status pending">Pending</span></td>
 <td>
 
 <a class="paybtn"
-href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=5000&cu=INR&tn=Ankul Court Fee">
+href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=5000&cu=INR">
 
 Pay ₹5000
 
 </a>
 
-<br><br>
+<br>
 
-<button class="paybtn"
+<button class="paybtn uploadbtn"
 onclick="openForm('अंकुल','5000')">
 
-Screenshot Send
+Screenshot
 
 </button>
 
 </td>
-
 </tr>
 
-
-
 <tr>
-
 <td>लल्ली</td>
-
-<td class="amount">₹5000</td>
-
-<td class="advance">₹0</td>
-
-<td class="pending">₹5000</td>
-
-<td class="pending">Pending</td>
-
+<td>₹5000</td>
+<td>₹0</td>
+<td class="red">₹5000</td>
+<td><span class="status pending">Pending</span></td>
 <td>
 
 <a class="paybtn"
-href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=5000&cu=INR&tn=Lalli Court Fee">
+href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=5000&cu=INR">
 
 Pay ₹5000
 
 </a>
 
-<br><br>
+<br>
 
-<button class="paybtn"
+<button class="paybtn uploadbtn"
 onclick="openForm('लल्ली','5000')">
 
-Screenshot Send
+Screenshot
 
 </button>
 
 </td>
-
 </tr>
 
-
-
 <tr>
-
 <td>पवन</td>
-
-<td class="amount">₹4200</td>
-
-<td class="advance">₹800</td>
-
-<td class="pending">₹3400</td>
-
-<td class="pending">Pending</td>
-
+<td>₹4200</td>
+<td>₹800</td>
+<td class="red">₹3400</td>
+<td><span class="status pending">Pending</span></td>
 <td>
 
 <a class="paybtn"
-href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=3400&cu=INR&tn=Pawan Court Fee">
+href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=3400&cu=INR">
 
 Pay ₹3400
 
 </a>
 
-<br><br>
+<br>
 
-<button class="paybtn"
+<button class="paybtn uploadbtn"
 onclick="openForm('पवन','3400')">
 
-Screenshot Send
+Screenshot
 
 </button>
 
 </td>
-
 </tr>
 
-
-
 <tr>
-
 <td>अभय</td>
-
-<td class="amount">₹5000</td>
-
-<td class="advance">₹0</td>
-
-<td class="pending">₹5000</td>
-
-<td class="pending">Pending</td>
-
+<td>₹5000</td>
+<td>₹0</td>
+<td class="red">₹5000</td>
+<td><span class="status pending">Pending</span></td>
 <td>
 
 <a class="paybtn"
-href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=5000&cu=INR&tn=Abhay Court Fee">
+href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=5000&cu=INR">
 
 Pay ₹5000
 
 </a>
 
-<br><br>
+<br>
 
-<button class="paybtn"
+<button class="paybtn uploadbtn"
 onclick="openForm('अभय','5000')">
 
-Screenshot Send
+Screenshot
 
 </button>
 
 </td>
-
 </tr>
 
-
-
 <tr>
-
-<td>अनिरूद्ध</td>
-
-<td class="amount">₹5000</td>
-
-<td class="advance">₹0</td>
-
-<td class="pending">₹5000</td>
-
-<td class="pending">Pending</td>
-
+<td>अनिरुद्ध</td>
+<td>₹5000</td>
+<td>₹0</td>
+<td class="red">₹5000</td>
+<td><span class="status pending">Pending</span></td>
 <td>
 
 <a class="paybtn"
-href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=5000&cu=INR&tn=Avdhesh Court Fee">
+href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=5000&cu=INR">
 
 Pay ₹5000
 
 </a>
 
-<br><br>
+<br>
 
-<button class="paybtn"
-onclick="openForm('<अनिरूद्ध','5000')">
+<button class="paybtn uploadbtn"
+onclick="openForm('अनिरुद्ध','5000')">
 
-Screenshot Send
+Screenshot
 
 </button>
 
 </td>
-
 </tr>
 
-
-
 <tr>
-
 <td>कृष्ण कुमार</td>
-
-<td class="amount">₹5000</td>
-
-<td class="advance">₹0</td>
-
-<td class="pending">₹5000</td>
-
-<td class="pending">Pending</td>
-
+<td>₹5000</td>
+<td>₹0</td>
+<td class="red">₹5000</td>
+<td><span class="status pending">Pending</span></td>
 <td>
 
 <a class="paybtn"
-href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=5000&cu=INR&tn=Krishna Kumar Court Fee">
+href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=5000&cu=INR">
 
 Pay ₹5000
 
 </a>
 
-<br><br>
+<br>
 
-<button class="paybtn"
+<button class="paybtn uploadbtn"
 onclick="openForm('कृष्ण कुमार','5000')">
 
-Screenshot Send
+Screenshot
 
 </button>
 
 </td>
-
 </tr>
-
-
 
 </table>
 
+</div>
 
+<!-- PROGRESS -->
+
+<div id="progress" class="news-section">
+
+<h2 class="news-title">
+📢 कोर्ट प्रोग्रेस रिपोर्ट
+</h2>
+
+<div class="news-card">
+
+<div class="news-date">
+30 अप्रैल 2026 | Latest Update
+</div>
+
+<div class="news-text">
+
+आज SDM कोर्ट में अपील सफलतापूर्वक दाखिल कर दी गई।
+सभी मुख्य दस्तावेज जमा हो गए हैं और अगली तारीख जल्द जारी होने की संभावना है।
+
+</div>
+
+</div>
+
+<div class="news-card">
+
+<div class="news-date">
+28 अप्रैल 2026
+</div>
+
+<div class="news-text">
+
+वकील द्वारा नया ड्राफ्ट तैयार किया गया और सभी पक्षों के हस्ताक्षर पूरे हुए।
+
+</div>
+
+</div>
+
+<div class="news-card">
+
+<div class="news-date">
+25 अप्रैल 2026
+</div>
+
+<div class="news-text">
+
+पुराने आदेश की certified copy प्राप्त हुई।
+
+</div>
+
+</div>
+
+</div>
+
+<!-- DOCUMENTS -->
+
+<div id="documents" class="docs-section">
+
+<h2 class="news-title">
+📂 संबंधित डॉक्यूमेंट
+</h2>
+
+<div class="docs-grid">
+
+<div class="doc-card">
+
+<img src="https://via.placeholder.com/400x250.png?text=Court+Order">
+
+<h4>
+कोर्ट आदेश कॉपी
+</h4>
+
+<a href="#">
+Open Document
+</a>
+
+</div>
+
+<div class="doc-card">
+
+<img src="https://via.placeholder.com/400x250.png?text=Appeal+Copy">
+
+<h4>
+अपील कॉपी
+</h4>
+
+<a href="#">
+Open Document
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- POPUP -->
 
 <div id="popup">
 
@@ -543,11 +758,13 @@ Screenshot Send
 <button class="closebtn"
 onclick="closeForm()">
 
-X
+×
 
 </button>
 
-<h2>Payment Details</h2>
+<h2>
+Payment Screenshot
+</h2>
 
 <input type="text"
 id="name"
@@ -555,25 +772,18 @@ placeholder="नाम">
 
 <input type="text"
 id="amount"
-placeholder="अमाउंट">
+placeholder="Amount">
 
 <textarea id="comment"
-placeholder="Comment / Payment किसलिए दिया">
+placeholder="Comment">
 </textarea>
 
-<label style="display:block;margin-top:15px;font-weight:bold;">
-
-Screenshot Upload
-
-</label>
-
 <input type="file"
-id="screenshot"
-accept="image/*">
+accept="image/*,.pdf">
 
-<p style="color:red;font-size:14px;margin-top:10px;">
+<p class="note">
 
-WhatsApp खुलने के बाद screenshot attach करके भेजें।
+Payment करने के बाद screenshot attach करके भेजना जरूरी है।
 
 </p>
 
@@ -588,15 +798,14 @@ Open WhatsApp
 
 </div>
 
+<!-- FLOAT BUTTON -->
 
+<button class="fixed-btn"
+onclick="alert('यहाँ future में नई court update add कर सकते हैं')">
 
-<p class="note">
++
 
-Payment करने के बाद screenshot attach करके भेजना जरूरी है।
-
-</p>
-
-
+</button>
 
 <script>
 
@@ -610,13 +819,11 @@ document.getElementById("amount").value=amount;
 
 }
 
-
 function closeForm(){
 
 document.getElementById("popup").style.display="none";
 
 }
-
 
 window.onclick = function(event){
 
@@ -629,7 +836,6 @@ popup.style.display = "none";
 }
 
 }
-
 
 function sendWhatsApp(){
 
@@ -647,11 +853,11 @@ let msg =
 
 नाम: ${name}
 
-अमाउंट: ₹${amount}
+Amount: ₹${amount}
 
 Comment: ${comment}
 
-Screenshot attach करके भेज रहा हूँ.`;
+Screenshot attach कर रहा हूँ।`;
 
 window.open(
 `https://wa.me/919455030291?text=${encodeURIComponent(msg)}`,
@@ -663,5 +869,4 @@ window.open(
 </script>
 
 </body>
-
 </html>
