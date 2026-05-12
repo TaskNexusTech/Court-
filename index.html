@@ -55,15 +55,13 @@ body{
     font-size:14px;
 }
 
-/* ALERT BAR */
+/* ALERT */
 
 .alert-bar{
     background:#dc2626;
     color:white;
     padding:12px;
     font-weight:bold;
-    font-size:15px;
-    box-shadow:0 3px 10px rgba(0,0,0,0.1);
 }
 
 /* MAIN */
@@ -226,28 +224,20 @@ tr:hover{
 .doc-card{
     background:white;
     border-radius:18px;
-    padding:15px;
+    padding:18px;
     box-shadow:0 5px 14px rgba(0,0,0,0.08);
 }
 
-.doc-card img{
-    width:100%;
-    height:180px;
-    object-fit:cover;
-    border-radius:12px;
-}
-
 .doc-card h4{
-    margin-top:10px;
+    margin-bottom:12px;
 }
 
 .doc-card a{
     display:inline-block;
-    margin-top:10px;
     text-decoration:none;
     background:#16a34a;
     color:white;
-    padding:8px 12px;
+    padding:10px 14px;
     border-radius:8px;
 }
 
@@ -319,7 +309,7 @@ input, textarea{
     font-size:14px;
 }
 
-/* FLOAT BUTTON */
+/* FLOAT */
 
 .fixed-btn{
     position:fixed;
@@ -333,10 +323,7 @@ input, textarea{
     border:none;
     font-size:30px;
     cursor:pointer;
-    box-shadow:0 5px 15px rgba(0,0,0,0.3);
 }
-
-/* MOBILE */
 
 @media(max-width:700px){
 
@@ -386,9 +373,9 @@ Documents
 
 <div class="alert-bar">
 
-<marquee behavior="scroll" direction="left">
+<marquee>
 
-30 अप्रैल आज सीतापुर में पुराने वाद की कॉपी निकालने के लिए आवेदन दिया गया। ⚠ सभी सदस्य जल्द से जल्द कोर्ट खर्च जमा करें । अगली सुनवाई की तैयारी चल रही है।
+Google Sheet update करते ही website auto update हो जाएगी।
 
 </marquee>
 
@@ -402,26 +389,34 @@ Documents
 
 <div class="card">
 <h3>कुल खर्च</h3>
-<div class="big red">₹45000</div>
+<div class="big red" id="totalAmount">
+₹0
+</div>
 </div>
 
 <div class="card">
 <h3>प्राप्त अमाउंट</h3>
-<div class="big green">₹9800</div>
+<div class="big green" id="paidAmount">
+₹0
+</div>
 </div>
 
 <div class="card">
 <h3>बाकी बचा</h3>
-<div class="big blue">₹35200</div>
+<div class="big blue" id="remainingAmount">
+₹0
+</div>
 </div>
 
 </div>
 
-<!-- TABLE -->
+<!-- PAYMENT TABLE -->
 
 <div id="payments" class="table-box">
 
 <table>
+
+<thead>
 
 <tr>
 <th>नाम</th>
@@ -432,227 +427,17 @@ Documents
 <th>Payment</th>
 </tr>
 
-<tr>
-<td>अवनीश</td>
-<td>₹5000</td>
-<td class="green">₹8000</td>
-<td>₹0</td>
-<td><span class="status advance">Advance</span></td>
-<td>
+</thead>
 
-<a class="paybtn"
-href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=0&cu=INR">
+<tbody id="paymentTable">
 
-Paid
-
-</a>
-
-<br>
-
-<button class="paybtn uploadbtn"
-onclick="openForm('अवनीश','0')">
-
-Screenshot
-
-</button>
-
-</td>
-</tr>
-
-<tr>
-<td>गोलू</td>
-<td>₹4000</td>
-<td>₹1000</td>
-<td class="red">₹3000</td>
-<td><span class="status pending">Pending</span></td>
-<td>
-
-<a class="paybtn"
-href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=3000&cu=INR">
-
-Pay ₹3000
-
-</a>
-
-<br>
-
-<button class="paybtn uploadbtn"
-onclick="openForm('गोलू','3000')">
-
-Screenshot
-
-</button>
-
-</td>
-</tr>
-
-<tr>
-<td>अंकुल</td>
-<td>₹5000</td>
-<td>₹0</td>
-<td class="red">₹5000</td>
-<td><span class="status pending">Pending</span></td>
-<td>
-
-<a class="paybtn"
-href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=5000&cu=INR">
-
-Pay ₹5000
-
-</a>
-
-<br>
-
-<button class="paybtn uploadbtn"
-onclick="openForm('अंकुल','5000')">
-
-Screenshot
-
-</button>
-
-</td>
-</tr>
-
-<tr>
-<td>लल्ली</td>
-<td>₹5000</td>
-<td>₹0</td>
-<td class="red">₹5000</td>
-<td><span class="status pending">Pending</span></td>
-<td>
-
-<a class="paybtn"
-href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=5000&cu=INR">
-
-Pay ₹5000
-
-</a>
-
-<br>
-
-<button class="paybtn uploadbtn"
-onclick="openForm('लल्ली','5000')">
-
-Screenshot
-
-</button>
-
-</td>
-</tr>
-
-<tr>
-<td>पवन</td>
-<td>₹4200</td>
-<td>₹1600</td>
-<td class="red">₹3400</td>
-<td><span class="status pending">Pending</span></td>
-<td>
-
-<a class="paybtn"
-href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=3400&cu=INR">
-
-Pay ₹3400
-
-</a>
-
-<br>
-
-<button class="paybtn uploadbtn"
-onclick="openForm('पवन','3400')">
-
-Screenshot
-
-</button>
-
-</td>
-</tr>
-
-<tr>
-<td>अभय</td>
-<td>₹5000</td>
-<td>₹0</td>
-<td class="red">₹5000</td>
-<td><span class="status pending">Pending</span></td>
-<td>
-
-<a class="paybtn"
-href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=5000&cu=INR">
-
-Pay ₹5000
-
-</a>
-
-<br>
-
-<button class="paybtn uploadbtn"
-onclick="openForm('अभय','5000')">
-
-Screenshot
-
-</button>
-
-</td>
-</tr>
-
-<tr>
-<td>अनिरुद्ध</td>
-<td>₹5000</td>
-<td>₹0</td>
-<td class="red">₹5000</td>
-<td><span class="status pending">Pending</span></td>
-<td>
-
-<a class="paybtn"
-href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=5000&cu=INR">
-
-Pay ₹5000
-
-</a>
-
-<br>
-
-<button class="paybtn uploadbtn"
-onclick="openForm('अनिरुद्ध','5000')">
-
-Screenshot
-
-</button>
-
-</td>
-</tr>
-
-<tr>
-<td>कृष्ण कुमार</td>
-<td>₹5000</td>
-<td>₹0</td>
-<td class="red">₹5000</td>
-<td><span class="status pending">Pending</span></td>
-<td>
-
-<a class="paybtn"
-href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=5000&cu=INR">
-
-Pay ₹5000
-
-</a>
-
-<br>
-
-<button class="paybtn uploadbtn"
-onclick="openForm('कृष्ण कुमार','5000')">
-
-Screenshot
-
-</button>
-
-</td>
-</tr>
+</tbody>
 
 </table>
 
 </div>
 
-<!-- PROGRESS -->
+<!-- NEWS -->
 
 <div id="progress" class="news-section">
 
@@ -660,54 +445,7 @@ Screenshot
 📢 कोर्ट प्रोग्रेस रिपोर्ट
 </h2>
 
-<div class="news-card">
-
-<div class="news-date">
-30 अप्रैल 2026 | Latest Update
-</div>
-
-<div class="news-text">
-
-सिविल कोर्ट में अपील दाखिल करने का प्रकरण में।
-सभी मुख्य दस्तावेज जमा किए जा रहे हैं और 1 तारीख तक अपील दाखिल करने की संभावना है।
-
-</div>
-
-</div>
-
-<div class="news-card">
-
-<div class="news-date">
-28 अप्रैल 2026
-</div>
-
-<div class="news-text">
-
-वकील द्वारा नया ड्राफ्ट तैयार किया गया।
-
-</div>
-
-<div class="news-text">
-
-सीतापुर में जाकर आज पुराने मुकदमे की आख्या ओर वाद के लिए आवेदन दिया गया। 
-
-</div>
-
-</div>
-
-<div class="news-card">
-
-<div class="news-date">
-25 अप्रैल 2026
-</div>
-
-<div class="news-text">
-
-5500/2022 आदेश की certified copy अभी प्राप्त नहीं हुई।
-
-</div>
-
-</div>
+<div id="newsContainer"></div>
 
 </div>
 
@@ -719,67 +457,8 @@ Screenshot
 📂 संबंधित डॉक्यूमेंट
 </h2>
 
-<div class="docs-grid">
-
-<div class="doc-card">
-
-<img src="Copy 1.jpg">
-<img src="Copy2.jpg">
-
-<h4>
-आवेदन कॉपी सीतापुर 
-</h4>
-
-<a href="#">
-Open Document
-</a>
-
-</div>
-<div class="doc-card">
-
-<img src="AP1.jpg">
-<img src="AP2.jpg">
-<img src="AP3.jpg">
-<img src="AP4.jpg">
-<img src="AP5.jpg">
-<h4>
-पूर्व सीमांकन आख्या
-</h4>
-
-<a href="#">
-Open Document
-</a>
-
-</div>
-
-<div class="doc-card">
-
-<img src="Copy 1.jpg">
-<img src="Copy2.jpg">
-
-<h4>
-IGRS Complaint
-</h4>
-
-<a href="#">
-Open Document
-</a>
-
-</div>
-
-<div class="doc-card">
-
-<img src="Order.pdf">
-
-<h4>
-पुराना आदेश 
-</h4>
-
-<a href="Order.pdf">
-Open Document
-</a>
-
-</div>
+<div class="docs-grid"
+id="documentContainer">
 
 </div>
 
@@ -816,12 +495,9 @@ placeholder="Amount">
 placeholder="Comment">
 </textarea>
 
-<input type="file"
-accept="image/*,.pdf">
-
 <p class="note">
 
-Payment करने के बाद screenshot attach करके भेजना जरूरी है।
+Payment के बाद screenshot WhatsApp पर भेजें।
 
 </p>
 
@@ -836,29 +512,44 @@ Open WhatsApp
 
 </div>
 
-<!-- FLOAT BUTTON -->
+<!-- FLOAT -->
 
-<button class="fixed-btn"
-onclick="alert('यहाँ future में नई court update add कर सकते हैं')">
+<button class="fixed-btn">
 
 +
 
 </button>
 
-
-
 <script>
 
 const API_URL =
-"https://script.google.com/macros/s/AKfycbyu0KtU_H2XFcMc0_4xZVchfhcpLxpem6NisjgS6wAPZQnRG6RrWV726ZWi-YCYb4N4vg/exec";
+"https://script.google.com/macros/s/AKfycbw20lLo2vSjzYqU3G_DC3ipzrb1YMhb2_PDdfrBJ42GR9Do0FC0imVYkyzI9r1PSSKdNg/exec";
 
-fetch(API_URL)
-.then(res => res.json())
-.then(data => {
+async function fetchData(){
+
+try{
+
+const response =
+await fetch(API_URL);
+
+const data =
+await response.json();
+
+console.log(data);
 
 loadPayments(data.payments);
 
-});
+loadNews(data.news);
+
+loadDocuments(data.documents);
+
+}catch(error){
+
+console.log(error);
+
+}
+
+}
 
 function loadPayments(payments){
 
@@ -867,15 +558,18 @@ document.getElementById("paymentTable");
 
 table.innerHTML = "";
 
+let totalAll = 0;
+let paidAll = 0;
+
 for(let i=1; i<payments.length; i++){
 
 let row = payments[i];
 
-let name = row[0];
-let total = Number(row[1]);
-let paid1 = Number(row[2]);
-let paid2 = Number(row[3]);
-let paid3 = Number(row[4]);
+let name = row[0] || "";
+let total = Number(row[1]) || 0;
+let paid1 = Number(row[2]) || 0;
+let paid2 = Number(row[3]) || 0;
+let paid3 = Number(row[4]) || 0;
 
 let paid =
 paid1 + paid2 + paid3;
@@ -887,6 +581,9 @@ let status =
 remaining <= 0
 ? "Advance"
 : "Pending";
+
+totalAll += total;
+paidAll += paid;
 
 let button =
 remaining <= 0
@@ -916,7 +613,7 @@ table.innerHTML += `
 ₹${paid}
 </td>
 
-<td class="red">
+<td class="${remaining > 0 ? 'red':'green'}">
 ₹${remaining}
 </td>
 
@@ -935,7 +632,7 @@ ${status}
 
 ${button}
 
-<br>
+<br><br>
 
 <button class="paybtn uploadbtn"
 onclick="openForm('${name}','${remaining}')">
@@ -952,21 +649,98 @@ Screenshot
 
 }
 
+document.getElementById("totalAmount")
+.innerText = `₹${totalAll}`;
+
+document.getElementById("paidAmount")
+.innerText = `₹${paidAll}`;
+
+document.getElementById("remainingAmount")
+.innerText =
+`₹${totalAll - paidAll}`;
+
+}
+
+function loadNews(news){
+
+let container =
+document.getElementById("newsContainer");
+
+container.innerHTML = "";
+
+for(let i=1; i<news.length; i++){
+
+let row = news[i];
+
+container.innerHTML += `
+
+<div class="news-card">
+
+<div class="news-date">
+${row[0]}
+</div>
+
+<div class="news-text">
+${row[1]}
+</div>
+
+</div>
+
+`;
+
+}
+
+}
+
+function loadDocuments(documents){
+
+let container =
+document.getElementById("documentContainer");
+
+container.innerHTML = "";
+
+for(let i=1; i<documents.length; i++){
+
+let row = documents[i];
+
+container.innerHTML += `
+
+<div class="doc-card">
+
+<h4>${row[0]}</h4>
+
+<a href="${row[1]}"
+target="_blank">
+
+Open Document
+
+</a>
+
+</div>
+
+`;
+
+}
+
 }
 
 function openForm(name, amount){
 
-document.getElementById("popup").style.display="flex";
+document.getElementById("popup")
+.style.display = "flex";
 
-document.getElementById("name").value=name;
+document.getElementById("name")
+.value = name;
 
-document.getElementById("amount").value=amount;
+document.getElementById("amount")
+.value = amount;
 
 }
 
 function closeForm(){
 
-document.getElementById("popup").style.display="none";
+document.getElementById("popup")
+.style.display = "none";
 
 }
 
@@ -1011,6 +785,12 @@ window.open(
 );
 
 }
+
+fetchData();
+
+/* AUTO REFRESH */
+
+setInterval(fetchData,30000);
 
 </script>
 
