@@ -845,7 +845,114 @@ onclick="alert('यहाँ future में नई court update add कर स
 
 </button>
 
+
+
 <script>
+
+const API_URL =
+"https://script.google.com/macros/s/AKfycbyu0KtU_H2XFcMc0_4xZVchfhcpLxpem6NisjgS6wAPZQnRG6RrWV726ZWi-YCYb4N4vg/exec";
+
+fetch(API_URL)
+.then(res => res.json())
+.then(data => {
+
+loadPayments(data.payments);
+
+});
+
+function loadPayments(payments){
+
+let table =
+document.getElementById("paymentTable");
+
+table.innerHTML = "";
+
+for(let i=1; i<payments.length; i++){
+
+let row = payments[i];
+
+let name = row[0];
+let total = Number(row[1]);
+let paid1 = Number(row[2]);
+let paid2 = Number(row[3]);
+let paid3 = Number(row[4]);
+
+let paid =
+paid1 + paid2 + paid3;
+
+let remaining =
+total - paid;
+
+let status =
+remaining <= 0
+? "Advance"
+: "Pending";
+
+let button =
+remaining <= 0
+
+? `<button class="paybtn uploadbtn">
+Paid
+</button>`
+
+: `
+<a class="paybtn"
+href="upi://pay?pa=avnish.dev@ptyes&pn=Avnish&am=${remaining}&cu=INR">
+
+Pay ₹${remaining}
+
+</a>
+`;
+
+table.innerHTML += `
+
+<tr>
+
+<td>${name}</td>
+
+<td>₹${total}</td>
+
+<td class="green">
+₹${paid}
+</td>
+
+<td class="red">
+₹${remaining}
+</td>
+
+<td>
+
+<span class="status
+${remaining <= 0 ? 'advance':'pending'}">
+
+${status}
+
+</span>
+
+</td>
+
+<td>
+
+${button}
+
+<br>
+
+<button class="paybtn uploadbtn"
+onclick="openForm('${name}','${remaining}')">
+
+Screenshot
+
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+}
+
+}
 
 function openForm(name, amount){
 
@@ -865,7 +972,8 @@ document.getElementById("popup").style.display="none";
 
 window.onclick = function(event){
 
-let popup = document.getElementById("popup");
+let popup =
+document.getElementById("popup");
 
 if(event.target == popup){
 
