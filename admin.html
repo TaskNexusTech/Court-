@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Panel</title>
+
+<link rel="stylesheet" href="admin.css">
+
+</head>
+
+<body>
+
+<div class="login-box" id="loginBox">
+
+<h2>
+Admin Login
+</h2>
+
+<input
+type="text"
+id="username"
+placeholder="Username">
+
+<input
+type="password"
+id="password"
+placeholder="Password">
+
+<button onclick="login()">
+Login
+</button>
+
+</div>
+
+<div class="admin-panel" id="adminPanel">
+
+<h1>
+⚖ Court Admin Panel
+</h1>
+
+<!-- NEWS -->
+
+<div class="card">
+
+<h2>
+Add News
+</h2>
+
+<textarea
+id="newsText"
+placeholder="Latest news">
+</textarea>
+
+<button onclick="addNews()">
+Add News
+</button>
+
+</div>
+
+<!-- EXPENSE -->
+
+<div class="card">
+
+<h2>
+Add Expense
+</h2>
+
+<input
+type="date"
+id="expenseDate">
+
+<input
+type="text"
+id="expenseTitle"
+placeholder="Expense title">
+
+<input
+type="number"
+id="expenseAmount"
+placeholder="Amount">
+
+<textarea
+id="expenseDetails"
+placeholder="Details">
+</textarea>
+
+<button onclick="addExpense()">
+Add Expense
+</button>
+
+</div>
+
+<!-- DOCUMENT -->
+
+<div class="card">
+
+<h2>
+Add Document
+</h2>
+
+<input
+type="text"
+id="docTitle"
+placeholder="Document title">
+
+<input
+type="text"
+id="docLink"
+placeholder="Google Drive link">
+
+<button onclick="addDocument()">
+Add Document
+</button>
+
+</div>
+
+</div>
+
+<script src="admin.js"></script>
+
+</body>
+</html>
