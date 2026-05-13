@@ -37,12 +37,15 @@ alert("Wrong Login");
 
 async function addNews(){
 
+let date =
+document.getElementById("newsDate").value;
+
 let text =
 document.getElementById("newsText").value;
 
-if(!text){
+if(!date || !text){
 
-alert("Enter news");
+alert("Date aur news likho");
 
 return;
 
@@ -56,6 +59,8 @@ body:JSON.stringify({
 
 type:"news",
 
+date:date,
+
 text:text
 
 })
@@ -65,7 +70,6 @@ text:text
 alert("News Added");
 
 document.getElementById("newsText").value="";
-
 }
 
 /* ADD EXPENSE */
