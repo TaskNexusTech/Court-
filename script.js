@@ -24,6 +24,8 @@ loadExpenses(data.expenses || []);
 
 loadNews(data.news || []);
 
+loadTopNews(data.news || []);
+
 loadDocuments(data.documents || []);
 
 }catch(error){
@@ -221,13 +223,9 @@ document.getElementById("newsContainer");
 
 container.innerHTML = "";
 
-let marqueeText = "";
-
-for(let i=1; i<news.length; i++){
+for(let i = news.length - 1; i >= 1; i--){
 
 let row = news[i];
-
-marqueeText += row[1] + " ⚖ ";
 
 container.innerHTML += `
 
@@ -247,8 +245,29 @@ ${row[1]}
 
 }
 
-document.getElementById("topNews")
-.innerText = marqueeText;
+}
+
+/* TOP NEWS */
+
+function loadTopNews(news){
+
+let marquee =
+document.getElementById("topNews");
+
+let latestNews = [];
+
+for(let i = news.length - 1; i >= 1; i--){
+
+latestNews.push(news[i][1]);
+
+if(latestNews.length == 2){
+break;
+}
+
+}
+
+marquee.innerHTML =
+latestNews.join(" ⚫ ");
 
 }
 
@@ -268,23 +287,13 @@ let row = documents[i];
 let title = row[0];
 let link = row[1];
 
-let preview = "";
-
-if(link.includes("/d/")){
-
-let fileId =
-link.split("/d/")[1].split("/")[0];
-
-preview =
-`https://drive.google.com/thumbnail?id=${fileId}&sz=w1000`;
-
-}
-
 container.innerHTML += `
 
 <div class="doc-card">
 
-<img src="${preview}">
+<div class="doc-icon">
+📄
+</div>
 
 <h4>
 ${title}
