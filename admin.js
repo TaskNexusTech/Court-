@@ -1,8 +1,8 @@
 const API_URL =
 "https://script.google.com/macros/s/AKfycbz4Br-4zfdg8jXEcWckE7PSSypFoXspLX-mApjpirJOnL8aDlZepH110XT-HJLNrPCWoQ/exec";
 
-const ADMIN_USER = "admin";
-const ADMIN_PASS = "12345";
+const ADMIN_USER = "Yadav";
+const ADMIN_PASS = "Avnish";
 
 /* LOGIN */
 
