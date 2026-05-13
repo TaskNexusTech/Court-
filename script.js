@@ -6,6 +6,26 @@ upi: "avnish.dev@ptyes",
 whatsapp: "919455030291"
 };
 
+/* DATE FORMAT */
+
+function formatDate(dateString){
+
+if(!dateString) return "";
+
+let date = new Date(dateString);
+
+if(isNaN(date)) return dateString;
+
+return date.toLocaleDateString('hi-IN',{
+
+day:'numeric',
+month:'long',
+year:'numeric'
+
+});
+
+}
+
 async function fetchData(){
 
 try{
@@ -192,7 +212,7 @@ table.innerHTML += `
 
 <tr>
 
-<td>${row[0]}</td>
+<td>${formatDate(row[0])}</td>
 
 <td>${row[1]}</td>
 
@@ -232,7 +252,7 @@ container.innerHTML += `
 <div class="news-card">
 
 <div class="news-date">
-${row[0]}
+${formatDate(row[0])}
 </div>
 
 <div class="news-text">
