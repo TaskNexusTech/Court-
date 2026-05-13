@@ -33,6 +33,7 @@ font-weight:bold;
 display:flex;
 gap:10px;
 flex-wrap:wrap;
+align-items:center;
 }
 
 .nav-links a{
@@ -42,6 +43,19 @@ background:#2563eb;
 padding:10px 14px;
 border-radius:10px;
 font-size:14px;
+transition:0.3s;
+}
+
+.nav-links a:hover{
+opacity:0.9;
+}
+
+/* ADMIN BUTTON */
+
+.admin-btn{
+background:#dc2626 !important;
+color:white !important;
+font-weight:bold;
 }
 
 /* ALERT */
@@ -188,6 +202,11 @@ border-radius:10px;
 font-size:16px;
 border:none;
 cursor:pointer;
+}
+
+.paybtn:hover,
+.submitbtn:hover{
+opacity:0.9;
 }
 
 /* NEWS */
@@ -351,6 +370,7 @@ background:#2563eb;
 color:white;
 font-size:30px;
 cursor:pointer;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
 }
 
 /* MOBILE */
